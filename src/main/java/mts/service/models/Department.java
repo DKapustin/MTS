@@ -1,13 +1,12 @@
 package mts.service.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import mts.service.interfaces.IDepartment;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/* Класс для таблицы 3 */
 @Data
 @Table(name = "departments")
 public class Department implements IDepartment {

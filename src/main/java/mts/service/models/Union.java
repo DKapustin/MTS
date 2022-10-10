@@ -1,8 +1,8 @@
 package mts.service.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import mts.service.interfaces.IUnion;
 
+/* Класс для запросов одновременно из всех таблиц*/
 public class Union implements IUnion {
     public Integer id;
     public String firstName;

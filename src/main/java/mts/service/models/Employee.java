@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-
+/* Класс для таблицы 1 */
 @Entity
 @Table(name = "personalInfo")
 @Data

@@ -1,8 +1,6 @@
 package mts.service.dao;
 
-import mts.service.models.Department;
 import mts.service.models.Employee;
-import mts.service.models.Position;
 import mts.service.models.Union;
 import org.springframework.stereotype.Component;
 
@@ -29,8 +27,7 @@ public class MainDAO {
         }
     }
 
-    /* Запросы для Department*/
-
+    /* Get - Получить список всех отделов из 3й таблицы */
     public List<String> indexDepartments() {
         List<String>departments = new ArrayList<>();
         try {
@@ -39,11 +36,7 @@ public class MainDAO {
             ResultSet resultSet = statement.executeQuery(SQL);
 
             while(resultSet.next()){
-                //Department department = new Department();
                 String department = resultSet.getString("department");
-                //department.setDepartment(resultSet.getString("department"));
-                //department.setJob(resultSet.getString("job"));
-                //department.setSecondName(resultSet.getString("secondName"));
 
                 departments.add(department);
             }
@@ -55,7 +48,7 @@ public class MainDAO {
         return departments;
     }
 
-
+    /* Get - Получить список всех сотрудников (id, Имя, Фамилия, Должность, Отдел) */
     public List<Object> allData() {
         List<Object> result = new ArrayList<>();
         try {
@@ -82,6 +75,7 @@ public class MainDAO {
         return result;
     }
 
+    /* Get - Получить данные одного сотрудника по id (Имя, Фамилия, Должность, Отдел) */
     public StringBuilder fullInfo(int id) {
         StringBuilder stringBuilder = new StringBuilder("");
         try{
@@ -106,7 +100,7 @@ public class MainDAO {
         return stringBuilder;
     }
 
-    /* Запросы для Position */
+    /* Get - Получить список всех должностей из 2й таблицы */
     public List<String> indexPositions() {
         List<String>positions = new ArrayList<>();
         try {
@@ -127,7 +121,7 @@ public class MainDAO {
         return positions;
     }
 
-    /* Запросы к Employees*/
+    /* Get - Получить список всех сотрудников из 1й таблицы */
     public List<Employee>indexEmployees() {
         List<Employee>employees = new ArrayList<>();
         try {
@@ -151,6 +145,7 @@ public class MainDAO {
         return employees;
     }
 
+    /* Post - Добавить сотрудника на существующую должность в существующий отдел */
     public void insertEmployee(Union union) {
         List<String> pos = indexPositions();
         List<String> dep = indexDepartments();
@@ -171,15 +166,4 @@ public class MainDAO {
             }
         }
     }
-        public void save (Employee employee){
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO personalInfo VALUES(1,?,?)");
-                preparedStatement.setString(1, employee.getFirstName());
-                preparedStatement.setString(2, employee.getSecondName());
-                preparedStatement.executeUpdate();
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
 }

@@ -1,7 +1,5 @@
 package mts.service.interfaces;
 
-import javax.persistence.Column;
-
 public interface IDepartment {
     String department = null;
     String job = null;

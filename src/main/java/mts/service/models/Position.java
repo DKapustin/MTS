@@ -1,11 +1,10 @@
 package mts.service.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
 
-
+/* Класс для таблицы 2 */
 @Data
 @Table(name = "positions")
 public class Position {
